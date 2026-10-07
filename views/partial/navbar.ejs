@@ -1,0 +1,46 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="<%= typeof user !== 'undefined' && user ? '/workoutshistory' : '/' %>">
+            Workout Logger
+        </a>
+
+        <div>
+            <% if (typeof user !== 'undefined' && user) { %>
+                <a href="/addWorkout" class="btn btn-primary me-2">
+                    Add Workout
+                </a>
+
+                <a href="/workoutshistory" class="btn btn-outline-light me-2">
+                    Workout History
+                </a>
+                
+                <a href="/goals" class="btn btn-outline-light me-2">
+                    Goals
+                </a>
+
+                <a href="/bodyProgress" class="btn btn-outline-light me-2">
+                    Body Progress Tracker
+                </a>
+
+                <% if (typeof user !== 'undefined' && user && user.role === 'trainer') { %>
+                    <!-- This is the admin nav bar -->
+                    <a href="/trainer" class="btn btn-outline-warning me-2">
+                        Trainer Dashboard
+                    </a>
+                <% } %>
+
+                <a href="/logout" class="btn btn-outline-danger">
+                    Logout
+                </a>
+            <% } else { %>
+                <a href="/login" class="btn btn-outline-light me-2">
+                    Login
+                </a>
+
+                <a href="/register" class="btn btn-light">
+                    Register
+                </a>
+            <% } %>
+        </div>
+    </div>
+</nav>

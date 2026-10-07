@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Progress Tracker</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<%- include('partial/navbar') %>
+
+<div class="container py-5">
+
+    <!-- Page Heading -->
+    <div class="text-center mb-5">
+        <h2 class="font-weight-bold">Body Progress Tracker</h2>
+        <p class="text-muted">Track your body measurements and monitor your fitness progress over time.</p>
+    </div>
+
+    <div class="row">
+
+        <!-- LEFT COLUMN -->
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Record</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/bodyProgress/add" method="POST">
+
+                        <div class="form-group">
+                            <label>Body Weight (kg)</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="weight"
+                                step="0.001"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>BMI</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="bmi"
+                                step="0.001"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Body Fat (%)</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="body_fat"
+                                step="0.001"
+                                required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Add Record</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-lg-5">
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Latest Statistics</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <% if(progress.length > 0){ %>
+
+                        <p>
+                            <strong>Current Weight:</strong><br>
+                            <%= progress[0].weight %> kg
+                        </p>
+
+                        <p>
+                            <strong>Current BMI:</strong><br>
+
+                            <%= progress[0].bmi %>
+
+                            <br>
+
+                            <% if(progress[0].bmi < 18.5){ %>
+
+                                <span class="badge bg-warning text-dark">
+                                    Underweight
+                                </span>
+
+                            <% } else if(progress[0].bmi < 25){ %>
+
+                                <span class="badge bg-success">
+                                    Healthy
+                                </span>
+
+                            <% } else if(progress[0].bmi < 30){ %>
+
+                                <span class="badge bg-warning text-dark">
+                                    Overweight
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="badge bg-danger">
+                                    Obese
+                                </span>
+
+                            <% } %>
+
+                        </p>
+
+                        <p>
+                            <strong>Body Fat:</strong><br>
+                            <%= progress[0].body_fat %> %
+                        </p>
+
+                        <p>
+                            <strong>Total Records:</strong><br>
+                            <%= progress.length %>
+                        </p>
+
+                    <% } else { %>
+
+                        <p class="text-muted">
+                            No records yet.<br>
+                            Add your first body progress record!
+                        </p>
+
+                    <% } %>
+
+                    <hr>
+
+                    <a href="/BMI" class="btn btn-outline-primary btn-block mb-2">BMI Calculator</a>
+
+                    <a href="/bodyFat" class="btn btn-outline-secondary btn-block">Body Fat Calculator</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Records Table -->
+
+    <div class="card shadow-sm">
+
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Previous Records</h5>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+                        <th>Weight (kg)</th>
+                        <th>BMI</th>
+                        <th>Body Fat (%)</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                <% if(progress.length === 0){ %>
+
+                    <tr>
+
+                        <td colspan="4" class="text-center text-muted">
+
+                            No body progress records available.
+
+                        </td>
+
+                    </tr>
+
+                <% } else { %>
+
+                    <% progress.forEach(record => { %>
+
+                    <tr>
+
+                        <td><%= record.progress_date.toLocaleDateString('en-US') %></td>
+
+                        <td>
+                            <%= record.weight %> kg
+                        </td>
+
+                        <td>
+                          <%= record.bmi %>
+
+                          <% if(record.bmi < 18.5){ %>
+
+                              <span class="badge bg-warning text-dark ms-2">
+                                  Underweight
+                              </span>
+
+                          <% } else if(record.bmi < 25){ %>
+
+                              <span class="badge bg-success ms-2">
+                                  Healthy
+                              </span>
+
+                          <% } else if(record.bmi < 30){ %>
+
+                              <span class="badge bg-warning text-dark ms-2">
+                                  Overweight
+                              </span>
+
+                          <% } else { %>
+
+                              <span class="badge bg-danger ms-2">
+                                  Obese
+                              </span>
+
+                          <% } %>
+
+                        </td>
+
+                        <td>
+                            <%= record.body_fat %> %
+                        </td>
+
+                    </tr>
+
+                    <% }) %>
+
+                <% } %>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

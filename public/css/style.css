@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-dark: #0b0f19;
+    --card-bg: #151c2c;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-purple: #8b5cf6;
+    --accent-cyan: #06b6d4;
+    --accent-blue: #3b82f6;
+    --accent-green: #10b981;
+    --accent-yellow: #f59e0b;
+    --accent-red: #ef4444;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body, body.bg-light, body.bg-white, body.bg-dark {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-body);
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Glassmorphism Cards */
+.card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-primary) !important;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15) !important;
+    border-color: rgba(139, 92, 246, 0.3) !important;
+}
+
+.card-header {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 1.25rem 1.5rem !important;
+}
+
+.card-body {
+    padding: 1.5rem !important;
+}
+
+/* Premium Navigation */
+.navbar {
+    background: rgba(11, 15, 25, 0.8) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Gradient Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    transition: all 0.25s ease !important;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan)) !important;
+}
+
+.btn-outline-light {
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 0.6rem 1.25rem;
+    transition: all 0.25s ease;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-outline-warning {
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    color: var(--accent-yellow) !important;
+    border-radius: 10px;
+}
+
+.btn-outline-warning:hover {
+    background: rgba(245, 158, 11, 0.1) !important;
+    color: #fff !important;
+}
+
+.btn-warning {
+    background-color: var(--accent-yellow) !important;
+    border: none !important;
+    color: #0b0f19 !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-warning:hover {
+    background-color: #f59e0bce !important;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: var(--accent-red) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background-color: #ef4444ce !important;
+    transform: translateY(-1px);
+}
+
+/* Elegant Tables */
+.table-responsive {
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0 !important;
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+.table th {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 1rem !important;
+}
+
+.table td {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 1rem !important;
+    vertical-align: middle;
+    color: var(--text-primary) !important;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Glass Inputs & Form Controls */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-primary) !important;
+    border-radius: 10px !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.25s ease !important;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--accent-purple) !important;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-control[readonly] {
+    background-color: rgba(255, 255, 255, 0.01) !important;
+    color: var(--text-secondary) !important;
+    border-style: dashed !important;
+}
+
+.form-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* BMI Status Badges */
+.badge {
+    padding: 0.4em 0.8em !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+}
+
+.bg-success {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.bg-warning {
+    background-color: rgba(245, 158, 11, 0.15) !important;
+    color: #fbbf24 !important;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.bg-danger {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.alert {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.alert-success {
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: #34d399 !important;
+    border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+.alert-danger {
+    background: rgba(239, 68, 68, 0.1) !important;
+    color: #f87171 !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.alert-info {
+    background: rgba(59, 130, 246, 0.1) !important;
+    color: #93c5fd !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* High Contrast & Readability Overrides */
+.text-muted {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.form-label, label {
+    color: #cbd5e1 !important;
+}
+
+::placeholder, input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+    opacity: 1 !important;
+}
+
+.input-group-text {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Override dark background classes to match theme card header styling */
+.bg-dark {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.card-header.bg-dark {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.bg-light, body.bg-light {
+    background-color: var(--bg-dark) !important;
+}
+
+.bg-white, body.bg-white {
+    background-color: var(--bg-dark) !important;
+}
+
+.alert-warning {
+    background: rgba(245, 158, 11, 0.1) !important;
+    color: #fbbf24 !important;
+    border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
